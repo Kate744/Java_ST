@@ -6,21 +6,17 @@ public static void main (String[] args) {
     hello("man");
 
     Square s = new Square(5);
-    System.out.println("Square if side a = " + s.l + " equal " + area(s));
+    System.out.println("Square if side a = " + s.l + " equal " + s.areal());
 
     Rectangle r = new Rectangle(5,7);
+    System.out.println("Square of rectangle if side a" + " = " + r.a + " and side b = " + r.b + " equal " + r.area());
 
-    System.out.println("Square of rectangle if side a" + " = " + r.a + " and side b = " + r.b + " equal " + area(r));
+    Point p = new Point(18, 27);
+    System.out.println("Distance between two points is " + p.distance());
+
 }
 public static void hello(String smb) {
     System.out.println("Hi " + smb + "!");
 }
 
-public static double area(Square s) {
-    return s.l * s.l;
-}
-
-public static double area (Rectangle r) {
-    return r.a * r.b;
-}
 };
