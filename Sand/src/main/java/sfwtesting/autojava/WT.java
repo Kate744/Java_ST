@@ -5,23 +5,22 @@ public class WT {
 public static void main (String[] args) {
     hello("man");
 
+    Square s = new Square(5);
+    System.out.println("Square if side a = " + s.l + " equal " + area(s));
 
-    double al = 5;
-    System.out.println("Square if side a = " + al + " equal " + area(al));
+    Rectangle r = new Rectangle(5,7);
 
-    double a = 5;
-    double b = 7;
-    System.out.println("Square of rectangle if side a" + " = " + a + " and side b = " + b + " equal " + area(a,b));
+    System.out.println("Square of rectangle if side a" + " = " + r.a + " and side b = " + r.b + " equal " + area(r));
 }
 public static void hello(String smb) {
     System.out.println("Hi " + smb + "!");
 }
 
-public static double area(double l) {
-    return l * l;
+public static double area(Square s) {
+    return s.l * s.l;
 }
 
-public static double area (double a, double b) {
-    return a * b;
+public static double area (Rectangle r) {
+    return r.a * r.b;
 }
 };
