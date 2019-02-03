@@ -11,7 +11,7 @@ public static void main (String[] args) {
     Rectangle r = new Rectangle(5,7);
     System.out.println("Square of rectangle if side a" + " = " + r.a + " and side b = " + r.b + " equal " + r.area());
 
-    Point p = new Point(18, 27);
+    Point p = new Point(18, 27, 14, 10);
     System.out.println("Distance between two points is " + p.distance());
 
 }
