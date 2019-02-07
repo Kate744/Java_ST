@@ -6,9 +6,9 @@ public class Point {
     public int y;
 
 
-    public Point(int x, int y) {
-        this.x = x;
-        this.y = y;
+    public Point(int absisa, int ordinata) {
+        this.x = absisa;
+        this.y = ordinata;
     }
 // До
    /* public double distance(Point p1, Point p2) {
