@@ -6,6 +6,9 @@
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/Sand.iml" filepath="$PROJECT_DIR$/.idea/modules/Sand.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/Sand.main.iml" filepath="$PROJECT_DIR$/.idea/modules/Sand.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/Sand.test.iml" filepath="$PROJECT_DIR$/.idea/modules/Sand.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/addressbook-web-tests.iml" filepath="$PROJECT_DIR$/.idea/modules/addressbook-web-tests.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/addressbook-web-tests.main.iml" filepath="$PROJECT_DIR$/.idea/modules/addressbook-web-tests.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/addressbook-web-tests.test.iml" filepath="$PROJECT_DIR$/.idea/modules/addressbook-web-tests.test.iml" />
     </modules>
   </component>
 </project>
