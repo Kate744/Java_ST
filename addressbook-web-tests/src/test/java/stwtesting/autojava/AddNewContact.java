@@ -15,16 +15,16 @@ public class AddNewContact {
     wd = new ChromeDriver();
     wd.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
     wd.get("http://localhost/addressbook/");
-    login();
+    login("admin", "secret");
   }
 
-  private void login() {
+  private void login(String userlogin, String password) {
     wd.findElement(By.name("user")).click();
     wd.findElement(By.name("user")).clear();
-    wd.findElement(By.name("user")).sendKeys("admin");
+    wd.findElement(By.name("user")).sendKeys(userlogin);
     wd.findElement(By.name("pass")).click();
     wd.findElement(By.name("pass")).clear();
-    wd.findElement(By.name("pass")).sendKeys("secret");
+    wd.findElement(By.name("pass")).sendKeys(password);
     wd.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Password:'])[1]/following::input[2]")).click();
   }
 
@@ -32,7 +32,7 @@ public class AddNewContact {
   public void testAddNewContact() throws Exception {
 
     gotoNewContactPage();
-    fillNewContactForm();
+    fillNewContactForm("Ivanko", "Ivankov", "User1234", "ivanko@yandex.ru");
     submitNewContactCreation();
 
   }
@@ -41,19 +41,19 @@ public class AddNewContact {
     wd.findElement(By.xpath("(//input[@name='submit'])[2]")).click();
   }
 
-  private void fillNewContactForm() {
+  private void fillNewContactForm(String firstname, String secondname, String username, String email) {
     wd.findElement(By.name("firstname")).click();
     wd.findElement(By.name("firstname")).clear();
-    wd.findElement(By.name("firstname")).sendKeys("Ivanko");
+    wd.findElement(By.name("firstname")).sendKeys(firstname);
     wd.findElement(By.name("lastname")).click();
     wd.findElement(By.name("lastname")).clear();
-    wd.findElement(By.name("lastname")).sendKeys("Ivankov");
+    wd.findElement(By.name("lastname")).sendKeys(secondname);
     wd.findElement(By.name("nickname")).click();
     wd.findElement(By.name("nickname")).clear();
-    wd.findElement(By.name("nickname")).sendKeys("User1234");
+    wd.findElement(By.name("nickname")).sendKeys(username);
     wd.findElement(By.name("email")).click();
     wd.findElement(By.name("email")).clear();
-    wd.findElement(By.name("email")).sendKeys("ivanko@yandex.ru");
+    wd.findElement(By.name("email")).sendKeys(email);
   }
 
   private void gotoNewContactPage() {
