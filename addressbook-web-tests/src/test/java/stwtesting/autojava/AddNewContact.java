@@ -32,6 +32,16 @@ public class AddNewContact {
   public void testAddNewContact() throws Exception {
 
     gotoNewContactPage();
+    fillNewContactForm();
+    submitNewContactCreation();
+
+  }
+
+  private void submitNewContactCreation() {
+    wd.findElement(By.xpath("(//input[@name='submit'])[2]")).click();
+  }
+
+  private void fillNewContactForm() {
     wd.findElement(By.name("firstname")).click();
     wd.findElement(By.name("firstname")).clear();
     wd.findElement(By.name("firstname")).sendKeys("Ivanko");
@@ -44,8 +54,6 @@ public class AddNewContact {
     wd.findElement(By.name("email")).click();
     wd.findElement(By.name("email")).clear();
     wd.findElement(By.name("email")).sendKeys("ivanko@yandex.ru");
-    wd.findElement(By.xpath("(//input[@name='submit'])[2]")).click();
-
   }
 
   private void gotoNewContactPage() {
@@ -54,10 +62,18 @@ public class AddNewContact {
 
   @AfterMethod(alwaysRun = true)
   public void tearDown() throws Exception {
-    wd.findElement(By.linkText("home")).click();
-    wd.findElement(By.linkText("Logout")).click();
+    returnToHomePage();
+    logout();
     wd.quit();
 
+  }
+
+  private void logout() {
+    wd.findElement(By.linkText("Logout")).click();
+  }
+
+  private void returnToHomePage() {
+    wd.findElement(By.linkText("home")).click();
   }
 
   private boolean isAlertPresent() {
