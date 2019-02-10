@@ -5,6 +5,7 @@ import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.*;
 import org.openqa.selenium.*;
+import stwtesting.autojava.NewContactData;
 
 public class AddNewContact {
   private WebDriver wd;
@@ -32,7 +33,7 @@ public class AddNewContact {
   public void testAddNewContact() throws Exception {
 
     gotoNewContactPage();
-    fillNewContactForm("Ivanko", "Ivankov", "User1234", "ivanko@yandex.ru");
+    fillNewContactForm(new NewContactData("Ivanko", "Ivankov", "User1234", "ivanko@yandex.ru"));
     submitNewContactCreation();
 
   }
@@ -41,19 +42,19 @@ public class AddNewContact {
     wd.findElement(By.xpath("(//input[@name='submit'])[2]")).click();
   }
 
-  private void fillNewContactForm(String firstname, String secondname, String username, String email) {
+  private void fillNewContactForm(NewContactData newContactData) {
     wd.findElement(By.name("firstname")).click();
     wd.findElement(By.name("firstname")).clear();
-    wd.findElement(By.name("firstname")).sendKeys(firstname);
+    wd.findElement(By.name("firstname")).sendKeys(newContactData.getFirstname());
     wd.findElement(By.name("lastname")).click();
     wd.findElement(By.name("lastname")).clear();
-    wd.findElement(By.name("lastname")).sendKeys(secondname);
+    wd.findElement(By.name("lastname")).sendKeys(newContactData.getSecondname());
     wd.findElement(By.name("nickname")).click();
     wd.findElement(By.name("nickname")).clear();
-    wd.findElement(By.name("nickname")).sendKeys(username);
+    wd.findElement(By.name("nickname")).sendKeys(newContactData.getUsername());
     wd.findElement(By.name("email")).click();
     wd.findElement(By.name("email")).clear();
-    wd.findElement(By.name("email")).sendKeys(email);
+    wd.findElement(By.name("email")).sendKeys(newContactData.getEmail());
   }
 
   private void gotoNewContactPage() {
