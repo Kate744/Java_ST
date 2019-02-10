@@ -15,6 +15,10 @@ public class AddNewContact {
     wd = new ChromeDriver();
     wd.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
     wd.get("http://localhost/addressbook/");
+    login();
+  }
+
+  private void login() {
     wd.findElement(By.name("user")).click();
     wd.findElement(By.name("user")).clear();
     wd.findElement(By.name("user")).sendKeys("admin");
@@ -27,7 +31,7 @@ public class AddNewContact {
   @Test
   public void testAddNewContact() throws Exception {
 
-    wd.findElement(By.linkText("add new")).click();
+    gotoNewContactPage();
     wd.findElement(By.name("firstname")).click();
     wd.findElement(By.name("firstname")).clear();
     wd.findElement(By.name("firstname")).sendKeys("Ivanko");
@@ -42,6 +46,10 @@ public class AddNewContact {
     wd.findElement(By.name("email")).sendKeys("ivanko@yandex.ru");
     wd.findElement(By.xpath("(//input[@name='submit'])[2]")).click();
 
+  }
+
+  private void gotoNewContactPage() {
+    wd.findElement(By.linkText("add new")).click();
   }
 
   @AfterMethod(alwaysRun = true)
