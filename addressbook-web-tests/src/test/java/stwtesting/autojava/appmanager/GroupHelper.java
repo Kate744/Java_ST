@@ -4,8 +4,12 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import stwtesting.autojava.model.GroupData;
 
-public class GroupHandlerelper {
-    protected WebDriver wd;
+public class GroupHelper {
+    private WebDriver wd;
+
+    public GroupHelper(WebDriver wd) {
+        this.wd = wd;
+    }
 
     public void returntoGroupPage() {
       wd.findElement(By.linkText("group page")).click();
