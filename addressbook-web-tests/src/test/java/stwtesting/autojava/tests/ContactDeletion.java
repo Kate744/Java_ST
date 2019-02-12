@@ -1,4 +1,4 @@
-package stwtesting.autojava;
+package stwtesting.autojava.tests;
 
 import java.util.concurrent.TimeUnit;
 
