@@ -1,4 +1,4 @@
-package stwtesting.autojava;
+package stwtesting.autojava.model;
 
 public class GroupData {
     private final String name;
