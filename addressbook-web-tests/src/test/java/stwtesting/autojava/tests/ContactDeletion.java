@@ -4,11 +4,9 @@ import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.*;
-import static org.testng.Assert.*;
 import org.openqa.selenium.*;
-import org.openqa.selenium.firefox.FirefoxDriver;
 
-public class ContactDeletion {
+public class ContactDeletion extends TestBase{
   private WebDriver wd;
 
   @BeforeMethod(alwaysRun = true)
