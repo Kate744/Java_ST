@@ -1,11 +1,11 @@
-package com.example.tests;
+package stwtesting.autojava.tests;
 
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.*;
 import org.openqa.selenium.*;
-import stwtesting.autojava.NewContactData;
+import stwtesting.autojava.model.NewContactData;
 
 public class AddNewContact {
   private WebDriver wd;

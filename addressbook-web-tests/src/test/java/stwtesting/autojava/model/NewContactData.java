@@ -1,4 +1,4 @@
-package stwtesting.autojava;
+package stwtesting.autojava.model;
 
 public class NewContactData {
     private final String firstname;
