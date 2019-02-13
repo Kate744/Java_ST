@@ -3,21 +3,24 @@ package stwtesting.autojava.tests;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import stwtesting.autojava.appmanager.ApplicationManager;
 import stwtesting.autojava.model.NewContactData;
+
+import java.util.concurrent.TimeUnit;
 
 public class TestBase {
 
     protected final ApplicationManager app = new ApplicationManager();
     protected WebDriver wd;
 
-    @BeforeMethod(alwaysRun = true)
+    /*@BeforeMethod(alwaysRun = true)
     public void setUp() throws Exception {
         app.init();
     }
-
+*/
     protected void login(String userlogin, String password) {
       wd.findElement(By.name("user")).click();
       wd.findElement(By.name("user")).clear();
@@ -51,12 +54,12 @@ public class TestBase {
       wd.findElement(By.linkText("add new")).click();
     }
 
-    @AfterMethod(alwaysRun = true)
+    /*@AfterMethod(alwaysRun = true)
     public void tearDown() throws Exception {
         app.stop();
 
     }
-
+*/
     protected void logout() {
       wd.findElement(By.linkText("Logout")).click();
     }
@@ -72,5 +75,21 @@ public class TestBase {
       } catch (NoAlertPresentException e) {
         return false;
       }
+    }
+
+    @BeforeMethod(alwaysRun = true)
+    public void setUp() throws Exception {
+      wd = new ChromeDriver();
+      wd.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+      wd.get("http://localhost/addressbook/");
+      login("admin", "secret");
+    }
+
+    @AfterMethod(alwaysRun = true)
+    public void tearDown() throws Exception {
+      returnToHomePage();
+      logout();
+      wd.quit();
+
     }
 }
