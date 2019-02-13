@@ -16,11 +16,11 @@ public class TestBase {
     protected final ApplicationManager app = new ApplicationManager();
     protected WebDriver wd;
 
-    /*@BeforeMethod(alwaysRun = true)
+   /* @BeforeMethod(alwaysRun = true)
     public void setUp() throws Exception {
         app.init();
-    }
-*/
+    }*/
+
     protected void login(String userlogin, String password) {
       wd.findElement(By.name("user")).click();
       wd.findElement(By.name("user")).clear();
@@ -58,8 +58,8 @@ public class TestBase {
     public void tearDown() throws Exception {
         app.stop();
 
-    }
-*/
+    }*/
+
     protected void logout() {
       wd.findElement(By.linkText("Logout")).click();
     }
