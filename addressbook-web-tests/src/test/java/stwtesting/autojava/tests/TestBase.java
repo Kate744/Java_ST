@@ -92,4 +92,12 @@ public class TestBase {
       wd.quit();
 
     }
+
+    protected void submitDeletion() {
+      wd.findElement(By.xpath("//input[@value='Delete']")).click();
+    }
+
+    protected void selectUser() {
+      wd.findElement(By.name("selected[]")).click();
+    }
 }

@@ -1,6 +1,5 @@
 package stwtesting.autojava.tests;
 
-
 import org.testng.annotations.*;
 import stwtesting.autojava.model.NewContactData;
 
@@ -15,6 +14,5 @@ public class AddNewContact extends TestBase{
     submitNewContactCreation();
 
   }
-
 
 }
