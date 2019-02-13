@@ -27,7 +27,7 @@ public class ContactDeletion {
     wd.findElement(By.name("pass")).clear();
     wd.findElement(By.name("pass")).sendKeys("secret");
     wd.findElement(By.id("LoginForm")).submit();
-    wd.findElement(By.id("1")).click();
+    wd.findElement(By.id("2")).click();
     wd.findElement(By.xpath("//input[@value='Delete']")).click();
   }
 
