@@ -7,8 +7,7 @@ import org.testng.annotations.*;
 import org.openqa.selenium.*;
 import stwtesting.autojava.model.NewContactData;
 
-public class AddNewContact {
-  private WebDriver wd;
+public class AddNewContact extends TestBase{
 
 
   @BeforeMethod(alwaysRun = true)
@@ -17,16 +16,6 @@ public class AddNewContact {
     wd.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
     wd.get("http://localhost/addressbook/");
     login("admin", "secret");
-  }
-
-  private void login(String userlogin, String password) {
-    wd.findElement(By.name("user")).click();
-    wd.findElement(By.name("user")).clear();
-    wd.findElement(By.name("user")).sendKeys(userlogin);
-    wd.findElement(By.name("pass")).click();
-    wd.findElement(By.name("pass")).clear();
-    wd.findElement(By.name("pass")).sendKeys(password);
-    wd.findElement(By.id("LoginForm")).submit();
   }
 
   @Test
@@ -38,52 +27,12 @@ public class AddNewContact {
 
   }
 
-  private void submitNewContactCreation() {
-    wd.findElement(By.xpath("(//input[@name='submit'])[2]")).click();
-  }
-
-  private void fillNewContactForm(NewContactData newContactData) {
-    wd.findElement(By.name("firstname")).click();
-    wd.findElement(By.name("firstname")).clear();
-    wd.findElement(By.name("firstname")).sendKeys(newContactData.getFirstname());
-    wd.findElement(By.name("lastname")).click();
-    wd.findElement(By.name("lastname")).clear();
-    wd.findElement(By.name("lastname")).sendKeys(newContactData.getSecondname());
-    wd.findElement(By.name("nickname")).click();
-    wd.findElement(By.name("nickname")).clear();
-    wd.findElement(By.name("nickname")).sendKeys(newContactData.getUsername());
-    wd.findElement(By.name("email")).click();
-    wd.findElement(By.name("email")).clear();
-    wd.findElement(By.name("email")).sendKeys(newContactData.getEmail());
-  }
-
-  private void gotoNewContactPage() {
-    wd.findElement(By.linkText("add new")).click();
-  }
-
   @AfterMethod(alwaysRun = true)
   public void tearDown() throws Exception {
     returnToHomePage();
     logout();
     wd.quit();
 
-  }
-
-  private void logout() {
-    wd.findElement(By.linkText("Logout")).click();
-  }
-
-  private void returnToHomePage() {
-    wd.findElement(By.linkText("home")).click();
-  }
-
-  private boolean isAlertPresent() {
-    try {
-      wd.switchTo().alert();
-      return true;
-    } catch (NoAlertPresentException e) {
-      return false;
-    }
   }
 
 
