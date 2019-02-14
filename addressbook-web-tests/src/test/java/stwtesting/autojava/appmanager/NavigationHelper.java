@@ -3,22 +3,22 @@ package stwtesting.autojava.appmanager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-public class NavigationHelper {
-    private ChromeDriver wd;
+public class NavigationHelper extends HelperBase{
+
 
     public NavigationHelper(ChromeDriver wd) {
-        this.wd = wd;
+        super(wd);
     }
 
     public void returnToHomePage() {
-      wd.findElement(By.linkText("home")).click();
+      click(By.linkText("home"));
     }
 
     public void gotoGroupPage() {
-      wd.findElement(By.linkText("groups")).click();
+      click(By.linkText("groups"));
     }
 
     public void logout() {
-        wd.findElement(By.linkText("Logout")).click();
+        click(By.linkText("Logout"));
     }
 }

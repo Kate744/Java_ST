@@ -1,23 +1,23 @@
 package stwtesting.autojava.appmanager;
 
+import com.sun.javafx.binding.ExpressionHelperBase;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import stwtesting.autojava.model.GroupData;
 
-public class GroupHelper {
-    private ChromeDriver wd;
+public class GroupHelper extends HelperBase {
 
     public GroupHelper(WebDriver wd) {
-        this.wd = (ChromeDriver) wd;
+        super(wd);
     }
 
     public void returntoGroupPage() {
-      wd.findElement(By.linkText("group page")).click();
+        click(By.linkText("group page"));
     }
 
     public void submitGroupCreation() {
-      wd.findElement(By.name("submit")).click();
+        click(By.name("submit"));
     }
 
     public void fillGroupForm(GroupData groupData) {
@@ -27,22 +27,16 @@ public class GroupHelper {
 
     }
 
-    private void type(By locator, String text) {
-        wd.findElement(locator).click();
-        wd.findElement(locator).clear();
-        wd.findElement(locator).sendKeys(text);
-    }
-
     public void initGroupCreation() {
-      wd.findElement(By.name("new")).click();
+        click(By.name("new"));
     }
 
 
     public void deleteSelectedGroup() {
-      wd.findElement(By.name("delete")).click();
+        click(By.name("delete"));
     }
 
     public void selectGroup() {
-      wd.findElement(By.name("selected[]")).click();
+        click(By.name("selected[]"));
     }
 }

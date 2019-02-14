@@ -5,40 +5,39 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import stwtesting.autojava.model.NewContactData;
 
-public class ContactHelper {
-    private ChromeDriver wd;
+public class ContactHelper extends HelperBase{
+
 
     public ContactHelper(WebDriver wd) {
-        //this.wd = wd;
-        this.wd = (ChromeDriver) wd;
+        super(wd);
     }
 
     public void submitNewContactCreation() {
-      wd.findElement(By.xpath("(//input[@name='submit'])[2]")).click();
+      click(By.xpath("(//input[@name='submit'])[2]"));
     }
 
     public void fillNewContactForm(NewContactData newContactData) {
-        type2(By.name("firstname"), newContactData.getFirstname());
-        type2(By.name("lastname"), newContactData.getSecondname());
-        type2(By.name("nickname"), newContactData.getUsername());
-        type2(By.name("email"), newContactData.getEmail());
+        type(By.name("firstname"), newContactData.getFirstname());
+        type(By.name("lastname"), newContactData.getSecondname());
+        type(By.name("nickname"), newContactData.getUsername());
+        type(By.name("email"), newContactData.getEmail());
     }
 
-    private void type2(By locator2, String text) {
-        wd.findElement(locator2).click();
-        wd.findElement(locator2).clear();
-        wd.findElement(locator2).sendKeys(text);
-    }
+    /*private void type(By locator, String text) {
+        wd.findElement(locator).click();
+        wd.findElement(locator).clear();
+        wd.findElement(locator).sendKeys(text);
+    }*/
 
     public void gotoNewContactPage() {
-      wd.findElement(By.linkText("add new")).click();
+      click(By.linkText("add new"));
     }
 
     public void submitDeletion() {
-      wd.findElement(By.xpath("//input[@value='Delete']")).click();
+      click(By.xpath("//input[@value='Delete']"));
     }
 
     public void selectUser() {
-      wd.findElement(By.name("selected[]")).click();
+      click(By.name("selected[]"));
     }
 }
