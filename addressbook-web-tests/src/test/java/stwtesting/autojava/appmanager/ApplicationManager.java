@@ -3,21 +3,17 @@ package stwtesting.autojava.appmanager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.chrome.ChromeDriver;
-
+import org.openqa.selenium.WebDriver;
 import java.util.concurrent.TimeUnit;
 
 public class ApplicationManager {
-     ChromeDriver wd;
-
+    ChromeDriver wd;
+    private NavigationHelper navigationHelper;
     private ContactHelper contactHelper;
     private GroupHelper groupHelper;
 
     public void logout() {
       wd.findElement(By.linkText("Logout")).click();
-    }
-
-    public void returnToHomePage() {
-      wd.findElement(By.linkText("home")).click();
     }
 
     public boolean isAlertPresent() {
@@ -36,6 +32,7 @@ public class ApplicationManager {
         wd.get("http://localhost/addressbook/");
         groupHelper = new GroupHelper(wd);
         contactHelper = new ContactHelper(wd);
+        navigationHelper = new NavigationHelper(wd);
         login("admin", "secret");
     }
 
@@ -49,10 +46,6 @@ public class ApplicationManager {
       wd.findElement(By.xpath("//input[@value='Login']")).click();
     }
 
-    public void gotoGroupPage() {
-      wd.findElement(By.linkText("groups")).click();
-    }
-
     public void stop() {
         wd.quit();
     }
@@ -64,5 +57,9 @@ public class ApplicationManager {
 
     public ContactHelper getContactHelper() {
         return contactHelper;
+    }
+
+    public NavigationHelper getNavigationHelper() {
+        return navigationHelper;
     }
 }
