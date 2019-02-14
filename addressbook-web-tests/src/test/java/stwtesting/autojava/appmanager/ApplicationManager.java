@@ -13,18 +13,7 @@ public class ApplicationManager {
     private ContactHelper contactHelper;
     private GroupHelper groupHelper;
 
-    /*public void logout() {
-      wd.findElement(By.linkText("Logout")).click();
-    }*/
 
-    public boolean isAlertPresent() {
-        try {
-            wd.switchTo().alert();
-            return true;
-        } catch (NoAlertPresentException e) {
-            return false;
-        }
-    }
 
     public void init() {
 
