@@ -2,13 +2,14 @@ package stwtesting.autojava.appmanager;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 import stwtesting.autojava.model.GroupData;
 
 public class GroupHelper {
-    private WebDriver wd;
+    ChromeDriver wd;
 
     public GroupHelper(WebDriver wd) {
-        this.wd = wd;
+        this.wd = (ChromeDriver) wd;
     }
 
     public void returntoGroupPage() {
