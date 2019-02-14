@@ -17,4 +17,8 @@ public class NavigationHelper {
     public void gotoGroupPage() {
       wd.findElement(By.linkText("groups")).click();
     }
+
+    public void logout() {
+        wd.findElement(By.linkText("Logout")).click();
+    }
 }

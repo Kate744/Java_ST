@@ -18,18 +18,16 @@ public class ContactHelper {
     }
 
     public void fillNewContactForm(NewContactData newContactData) {
-      wd.findElement(By.name("firstname")).click();
-      wd.findElement(By.name("firstname")).clear();
-      wd.findElement(By.name("firstname")).sendKeys(newContactData.getFirstname());
-      wd.findElement(By.name("lastname")).click();
-      wd.findElement(By.name("lastname")).clear();
-      wd.findElement(By.name("lastname")).sendKeys(newContactData.getSecondname());
-      wd.findElement(By.name("nickname")).click();
-      wd.findElement(By.name("nickname")).clear();
-      wd.findElement(By.name("nickname")).sendKeys(newContactData.getUsername());
-      wd.findElement(By.name("email")).click();
-      wd.findElement(By.name("email")).clear();
-      wd.findElement(By.name("email")).sendKeys(newContactData.getEmail());
+        type2(By.name("firstname"), newContactData.getFirstname());
+        type2(By.name("lastname"), newContactData.getSecondname());
+        type2(By.name("nickname"), newContactData.getUsername());
+        type2(By.name("email"), newContactData.getEmail());
+    }
+
+    private void type2(By locator2, String text) {
+        wd.findElement(locator2).click();
+        wd.findElement(locator2).clear();
+        wd.findElement(locator2).sendKeys(text);
     }
 
     public void gotoNewContactPage() {

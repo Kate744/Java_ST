@@ -13,9 +13,9 @@ public class ApplicationManager {
     private ContactHelper contactHelper;
     private GroupHelper groupHelper;
 
-    public void logout() {
+    /*public void logout() {
       wd.findElement(By.linkText("Logout")).click();
-    }
+    }*/
 
     public boolean isAlertPresent() {
         try {
