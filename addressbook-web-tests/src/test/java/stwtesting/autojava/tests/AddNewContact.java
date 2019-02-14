@@ -9,9 +9,9 @@ public class AddNewContact extends TestBase{
   @Test
   public void testAddNewContact() throws Exception {
 
-    gotoNewContactPage();
-    fillNewContactForm(new NewContactData("Ivanko", "Ivankov", "User1234", "ivanko@yandex.ru"));
-    submitNewContactCreation();
+    app.gotoNewContactPage();
+    app.fillNewContactForm(new NewContactData("Ivanko", "Ivankov", "User1234", "ivanko@yandex.ru"));
+    app.submitNewContactCreation();
 
   }
 

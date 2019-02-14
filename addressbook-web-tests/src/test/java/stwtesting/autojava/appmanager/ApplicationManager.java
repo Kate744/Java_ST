@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import stwtesting.autojava.model.NewContactData;
 
 import java.util.concurrent.TimeUnit;
 
@@ -12,7 +13,38 @@ public class ApplicationManager {
 
     private GroupHelper groupHelper;
 
-    private boolean isAlertPresent() {
+    public void submitNewContactCreation() {
+      wd.findElement(By.xpath("(//input[@name='submit'])[2]")).click();
+    }
+
+    public void fillNewContactForm(NewContactData newContactData) {
+      wd.findElement(By.name("firstname")).click();
+      wd.findElement(By.name("firstname")).clear();
+      wd.findElement(By.name("firstname")).sendKeys(newContactData.getFirstname());
+      wd.findElement(By.name("lastname")).click();
+      wd.findElement(By.name("lastname")).clear();
+      wd.findElement(By.name("lastname")).sendKeys(newContactData.getSecondname());
+      wd.findElement(By.name("nickname")).click();
+      wd.findElement(By.name("nickname")).clear();
+      wd.findElement(By.name("nickname")).sendKeys(newContactData.getUsername());
+      wd.findElement(By.name("email")).click();
+      wd.findElement(By.name("email")).clear();
+      wd.findElement(By.name("email")).sendKeys(newContactData.getEmail());
+    }
+
+    public void gotoNewContactPage() {
+      wd.findElement(By.linkText("add new")).click();
+    }
+
+    public void logout() {
+      wd.findElement(By.linkText("Logout")).click();
+    }
+
+    public void returnToHomePage() {
+      wd.findElement(By.linkText("home")).click();
+    }
+
+    public boolean isAlertPresent() {
         try {
             wd.switchTo().alert();
             return true;
@@ -51,5 +83,13 @@ public class ApplicationManager {
 
     public GroupHelper getGroupHelper() {
         return groupHelper;
+    }
+
+    public void submitDeletion() {
+      wd.findElement(By.xpath("//input[@value='Delete']")).click();
+    }
+
+    public void selectUser() {
+      wd.findElement(By.name("selected[]")).click();
     }
 }
