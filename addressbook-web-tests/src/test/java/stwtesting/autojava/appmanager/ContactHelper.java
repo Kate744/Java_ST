@@ -23,21 +23,24 @@ public class ContactHelper extends HelperBase{
         type(By.name("email"), newContactData.getEmail());
     }
 
-    /*private void type(By locator, String text) {
-        wd.findElement(locator).click();
-        wd.findElement(locator).clear();
-        wd.findElement(locator).sendKeys(text);
-    }*/
-
     public void gotoNewContactPage() {
       click(By.linkText("add new"));
     }
 
     public void submitDeletion() {
       click(By.xpath("//input[@value='Delete']"));
+        wd.switchTo().alert().accept();
     }
 
     public void selectUser() {
       click(By.name("selected[]"));
+    }
+
+    public void initContactModification() {
+        click(By.cssSelector("img[alt=\"Edit\"]"));
+    }
+
+    public void submitContactModification() {
+        click(By.name("update"));
     }
 }
