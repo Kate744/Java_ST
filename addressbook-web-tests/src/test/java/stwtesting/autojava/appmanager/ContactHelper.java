@@ -6,7 +6,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import stwtesting.autojava.model.NewContactData;
 
 public class ContactHelper {
-    ChromeDriver wd;
+    private ChromeDriver wd;
 
     public ContactHelper(WebDriver wd) {
         //this.wd = wd;

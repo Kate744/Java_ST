@@ -13,16 +13,16 @@ public class ApplicationManager {
     private GroupHelper groupHelper;
 
     public void logout() {
-      contactHelper.wd.findElement(By.linkText("Logout")).click();
+      wd.findElement(By.linkText("Logout")).click();
     }
 
     public void returnToHomePage() {
-      contactHelper.wd.findElement(By.linkText("home")).click();
+      wd.findElement(By.linkText("home")).click();
     }
 
     public boolean isAlertPresent() {
         try {
-            contactHelper.wd.switchTo().alert();
+            wd.switchTo().alert();
             return true;
         } catch (NoAlertPresentException e) {
             return false;
@@ -40,21 +40,21 @@ public class ApplicationManager {
     }
 
     private void login(String username, String password) {
-      contactHelper.wd.findElement(By.name("user")).click();
-      contactHelper.wd.findElement(By.name("user")).clear();
-      contactHelper.wd.findElement(By.name("user")).sendKeys(username);
-      contactHelper.wd.findElement(By.name("pass")).click();
-      contactHelper.wd.findElement(By.name("pass")).clear();
-      contactHelper.wd.findElement(By.name("pass")).sendKeys(password);
-      contactHelper.wd.findElement(By.xpath("//input[@value='Login']")).click();
+      wd.findElement(By.name("user")).click();
+      wd.findElement(By.name("user")).clear();
+      wd.findElement(By.name("user")).sendKeys(username);
+      wd.findElement(By.name("pass")).click();
+      wd.findElement(By.name("pass")).clear();
+      wd.findElement(By.name("pass")).sendKeys(password);
+      wd.findElement(By.xpath("//input[@value='Login']")).click();
     }
 
     public void gotoGroupPage() {
-      contactHelper.wd.findElement(By.linkText("groups")).click();
+      wd.findElement(By.linkText("groups")).click();
     }
 
     public void stop() {
-        contactHelper.wd.quit();
+        wd.quit();
     }
 
 

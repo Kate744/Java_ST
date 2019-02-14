@@ -6,7 +6,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import stwtesting.autojava.model.GroupData;
 
 public class GroupHelper {
-    ChromeDriver wd;
+    private ChromeDriver wd;
 
     public GroupHelper(WebDriver wd) {
         this.wd = (ChromeDriver) wd;
