@@ -1,9 +1,7 @@
 package stwtesting.autojava.appmanager;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.WebDriver;
+
 import java.util.concurrent.TimeUnit;
 
 public class ApplicationManager {
