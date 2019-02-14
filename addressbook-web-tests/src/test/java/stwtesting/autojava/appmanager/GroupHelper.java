@@ -1,9 +1,7 @@
 package stwtesting.autojava.appmanager;
 
-import com.sun.javafx.binding.ExpressionHelperBase;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import stwtesting.autojava.model.GroupData;
 
 public class GroupHelper extends HelperBase {
@@ -38,5 +36,13 @@ public class GroupHelper extends HelperBase {
 
     public void selectGroup() {
         click(By.name("selected[]"));
+    }
+
+    public void initGroupModification() {
+        click(By.name("edit"));
+    }
+
+    public void submitGroupModification() {
+        click(By.name("update"));
     }
 }

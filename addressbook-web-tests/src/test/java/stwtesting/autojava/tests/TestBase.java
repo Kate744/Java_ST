@@ -6,7 +6,7 @@ import stwtesting.autojava.appmanager.ApplicationManager;
 
 public class TestBase {
     protected final ApplicationManager app = new ApplicationManager();
-    
+
 
     @BeforeMethod(alwaysRun = true)
     public void setUp() throws Exception {
@@ -14,11 +14,9 @@ public class TestBase {
     }
 
 
-
     @AfterMethod(alwaysRun = true)
     public void tearDown() throws Exception {
         app.stop();
-
     }
 
 
