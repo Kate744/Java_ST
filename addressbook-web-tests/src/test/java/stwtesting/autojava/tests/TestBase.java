@@ -7,7 +7,7 @@ import org.testng.annotations.BeforeMethod;
 import stwtesting.autojava.appmanager.ApplicationManager;
 
 public class TestBase {
-    protected final ApplicationManager app = new ApplicationManager(BrowserType.CHROME);
+    protected final ApplicationManager app = new ApplicationManager(BrowserType.EDGE);
 
 
     @BeforeMethod(alwaysRun = true)
