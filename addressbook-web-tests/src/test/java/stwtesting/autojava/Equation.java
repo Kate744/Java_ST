@@ -1,6 +1,6 @@
 package stwtesting.autojava;
 
-public class Equation {
+/*public class Equation {
 
     private double a;
     private double b;
@@ -43,7 +43,7 @@ public class Equation {
         }
         }
 
-*/
+
 
         if (a != 0) {
             {
@@ -98,7 +98,7 @@ public class Equation {
         if (d < 0 ) {
             n = 0;
         }
-    }*/
+    }
 
 
     public int rootNumber () {
@@ -106,3 +106,4 @@ public class Equation {
     }
 }
 
+*/

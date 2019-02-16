@@ -6,7 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 public class HelperBase {
-    protected ChromeDriver wd;
+    protected WebDriver wd;
 
     public HelperBase(WebDriver wd) {
         this.wd = (ChromeDriver) wd;
