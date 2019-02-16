@@ -2,9 +2,9 @@ package stwtesting.autojava.tests;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
-//import stwtesting.autojava.Equation;
+import stwtesting.autojava.Equation;
 
-/*public class EquationTests {
+public class EquationTests {
 
 @Test
     public void test0 () {
@@ -51,4 +51,3 @@ import org.testng.annotations.Test;
 
 
 }
-*/
