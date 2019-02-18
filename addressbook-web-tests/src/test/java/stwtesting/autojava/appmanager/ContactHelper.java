@@ -1,8 +1,10 @@
 package stwtesting.autojava.appmanager;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.Select;
 import stwtesting.autojava.model.NewContactData;
 
 public class ContactHelper extends HelperBase{
@@ -21,6 +23,11 @@ public class ContactHelper extends HelperBase{
         type(By.name("lastname"), newContactData.getSecondname());
         type(By.name("nickname"), newContactData.getUsername());
         type(By.name("email"), newContactData.getEmail());
+
+        if (isElementPresent(By.name("new_group"))) {
+            new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(newContactData.getGroup());
+        }
+
     }
 
     public void gotoNewContactPage() {
