@@ -6,7 +6,7 @@ import stwtesting.autojava.model.GroupData;
 public class GroupDeletionTests extends TestBase{
 
   @Test
-  public void testGroupDeletion() throws Exception {
+  public void testGroupDeletion() {
 
     app.getNavigationHelper().gotoGroupPage();
 

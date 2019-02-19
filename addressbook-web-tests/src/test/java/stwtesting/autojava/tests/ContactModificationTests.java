@@ -6,6 +6,12 @@ import stwtesting.autojava.model.NewContactData;
 public class ContactModificationTests extends TestBase {
         @Test
     public void  testContactModification() {
+            if (! app.getContactHelper().isThereAContact()) {
+
+                app.getContactHelper().createNewContact(new NewContactData("Ivanko", "Ivankov", "jgii", "fjfi@m", "Test5"));
+            }
+
+            app.getNavigationHelper().returnToHomePage();
         app.getContactHelper().selectUser();
         app.getContactHelper().initContactModification();
         app.getContactHelper().fillNewContactForm(new NewContactData("Sebastian", "Savin", "user8","mailmail@mail.ru", null), false);
