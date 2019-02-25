@@ -4,6 +4,8 @@ import org.testng.Assert;
 import org.testng.annotations.*;
 import stwtesting.autojava.model.NewContactData;
 
+import java.util.List;
+
 public class ContactDeletion extends TestBase{
 
 
@@ -14,12 +16,12 @@ public class ContactDeletion extends TestBase{
 
       app.getContactHelper().createNewContact(new NewContactData("Ivanko", "Ivankov", "jgii", "fjfi@m", "[none]"));
     }
-    int before = app.getContactHelper().getContactCount();
+    List<NewContactData> before = app.getContactHelper().getContactList();
     app.getNavigationHelper().returnToHomePage();
-    app.getContactHelper().selectUser(before-1);
+    app.getContactHelper().selectUser(before.size()-1);
     app.getContactHelper().submitDeletion();
-    int after = app.getContactHelper().getContactCount();
-    Assert.assertEquals(after, before -1);
+    List<NewContactData> after = app.getContactHelper().getContactList();
+    Assert.assertEquals(after.size(), before.size() -1);
   }
 
 

@@ -2,9 +2,13 @@ package stwtesting.autojava.appmanager;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import stwtesting.autojava.model.NewContactData;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ContactHelper extends HelperBase{
 
@@ -73,5 +77,18 @@ public class ContactHelper extends HelperBase{
     public int getContactCount() {
 
         return wd.findElements(By.name("selected[]")).size();
+    }
+
+    public List<NewContactData> getContactList() {
+        List<NewContactData> contacts = new ArrayList<>();
+        List<WebElement> elements = wd.findElements(By.name("entry"));
+        for (WebElement element: elements) {
+            String name = element.getText();
+            NewContactData contact = new NewContactData(name, null, null, null, "[none]");
+            contacts.add(contact);
+        }
+        return contacts;
+
+
     }
 }
