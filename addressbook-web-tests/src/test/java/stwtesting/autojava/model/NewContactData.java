@@ -1,6 +1,7 @@
 package stwtesting.autojava.model;
 
 public class NewContactData {
+    private final String id;
     private final String firstname;
     private final String secondname;
     private final String username;
@@ -14,6 +15,7 @@ public class NewContactData {
 
         NewContactData that = (NewContactData) o;
 
+        if (id != null ? !id.equals(that.id) : that.id != null) return false;
         if (firstname != null ? !firstname.equals(that.firstname) : that.firstname != null) return false;
         if (secondname != null ? !secondname.equals(that.secondname) : that.secondname != null) return false;
         if (username != null ? !username.equals(that.username) : that.username != null) return false;
@@ -23,7 +25,8 @@ public class NewContactData {
 
     @Override
     public int hashCode() {
-        int result = firstname != null ? firstname.hashCode() : 0;
+        int result = id != null ? id.hashCode() : 0;
+        result = 31 * result + (firstname != null ? firstname.hashCode() : 0);
         result = 31 * result + (secondname != null ? secondname.hashCode() : 0);
         result = 31 * result + (username != null ? username.hashCode() : 0);
         result = 31 * result + (email != null ? email.hashCode() : 0);
@@ -34,11 +37,30 @@ public class NewContactData {
     @Override
     public String toString() {
         return "NewContactData{" +
-                "firstname='" + firstname + '\'' +
+                "id='" + id + '\'' +
+                ", firstname='" + firstname + '\'' +
+                ", secondname='" + secondname + '\'' +
+                ", username='" + username + '\'' +
+                ", email='" + email + '\'' +
+                ", group='" + group + '\'' +
                 '}';
     }
 
+    public String getId() {
+        return id;
+    }
+
     public NewContactData(String firstname, String secondname, String username, String email, String group) {
+        this.id = null;
+        this.firstname = firstname;
+        this.secondname = secondname;
+        this.username = username;
+        this.email = email;
+        this.group = group;
+    }
+
+    public NewContactData(String id, String firstname, String secondname, String username, String email, String group) {
+        this.id = id;
         this.firstname = firstname;
         this.secondname = secondname;
         this.username = username;

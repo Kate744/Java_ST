@@ -4,6 +4,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import stwtesting.autojava.model.NewContactData;
 
+import java.util.HashSet;
 import java.util.List;
 
 public class ContactModificationTests extends TestBase {
@@ -18,10 +19,15 @@ public class ContactModificationTests extends TestBase {
             app.getNavigationHelper().returnToHomePage();
         app.getContactHelper().selectUser(before.size()-1);
         app.getContactHelper().initContactModification();
-        app.getContactHelper().fillNewContactForm(new NewContactData("Sebastian", "Savin", "user8","mailmail@mail.ru", null), false);
+        NewContactData contact = new NewContactData (before.get(before.size() - 1).getId(), "Sebastian", "Savin", "user8","mailmail@mail.ru", "[none]");
+        app.getContactHelper().fillNewContactForm(contact, false);
         app.getContactHelper().submitContactModification();
             List<NewContactData> after = app.getContactHelper().getContactList();
             Assert.assertEquals(after.size(), before.size());
+
+            before.remove(before.size()-1);
+            before.add(contact);
+            Assert.assertEquals(new HashSet<>(before), new HashSet<>(after));
 
     }
 }
