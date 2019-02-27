@@ -87,10 +87,10 @@ public class ContactHelper extends HelperBase{
 
             //List<WebElement> cells = element.findElements(By.cssSelector("t-body > tr:nth-child(2) > td.nth-child(2)"));
             List<WebElement>cells = element.findElements(By.tagName("td"));
-            String name = cells.get(3).getText();
-            String surname = cells.get(2).getText();
-            String add = cells.get(4).getText();
-            String email = cells.get(5).getText();
+            String name = cells.get(2).getText();
+            String surname = cells.get(1).getText();
+            String add = cells.get(3).getText();
+            String email = cells.get(4).getText();
             //String group = cells.get(6).getText();
             String id = element.findElement(new By.ByTagName("input")).getAttribute("value");
 
