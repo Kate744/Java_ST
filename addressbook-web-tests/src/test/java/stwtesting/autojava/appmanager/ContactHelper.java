@@ -24,7 +24,7 @@ public class ContactHelper extends HelperBase{
     public void fillNewContactForm(NewContactData newContactData, boolean creation) {
         type(By.name("firstname"), newContactData.getFirstname());
         type(By.name("lastname"), newContactData.getSecondname());
-        type(By.name("nickname"), newContactData.getUsername());
+        type(By.name("address"), newContactData.getAddress());
         type(By.name("email"), newContactData.getEmail());
 
         if (creation) {
@@ -83,10 +83,18 @@ public class ContactHelper extends HelperBase{
         List<NewContactData> contacts = new ArrayList<>();
         List<WebElement> elements = wd.findElements(By.name("entry"));
         for (WebElement element: elements) {
-            //String name = element.getText();
-            String name = element.findElement(new By.cssSelector(input.tr:nth-child(1))).getAttribute("value");
+
+
+            //List<WebElement> cells = element.findElements(By.cssSelector("t-body > tr:nth-child(2) > td.nth-child(2)"));
+            List<WebElement>cells = element.findElements(By.tagName("td"));
+            String name = cells.get(3).getText();
+            String surname = cells.get(2).getText();
+            String add = cells.get(4).getText();
+            String email = cells.get(5).getText();
+            //String group = cells.get(6).getText();
             String id = element.findElement(new By.ByTagName("input")).getAttribute("value");
-            NewContactData contact = new NewContactData(id, name, "Savin", "user8", "mailmail@mail.ru", "[none]");
+
+            NewContactData contact = new NewContactData(id, name, surname, add, email, null);
             //"Sebastian", "Savin", "user8","mailmail@mail.ru", "[none]"
             //NewContactData contact = new NewContactData(name, "Savin", "user8","mailmail@mail.ru", "[none]");
             contacts.add(contact);

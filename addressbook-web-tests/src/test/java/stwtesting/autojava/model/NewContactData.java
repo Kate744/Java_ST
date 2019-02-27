@@ -4,7 +4,7 @@ public class NewContactData {
     private final String id;
     private final String firstname;
     private final String secondname;
-    private final String username;
+    private final String address;
     private final String email;
     private String group;
 
@@ -18,7 +18,7 @@ public class NewContactData {
         if (id != null ? !id.equals(that.id) : that.id != null) return false;
         if (firstname != null ? !firstname.equals(that.firstname) : that.firstname != null) return false;
         if (secondname != null ? !secondname.equals(that.secondname) : that.secondname != null) return false;
-        if (username != null ? !username.equals(that.username) : that.username != null) return false;
+        if (address != null ? !address.equals(that.address) : that.address != null) return false;
         if (email != null ? !email.equals(that.email) : that.email != null) return false;
         return group != null ? group.equals(that.group) : that.group == null;
     }
@@ -28,7 +28,7 @@ public class NewContactData {
         int result = id != null ? id.hashCode() : 0;
         result = 31 * result + (firstname != null ? firstname.hashCode() : 0);
         result = 31 * result + (secondname != null ? secondname.hashCode() : 0);
-        result = 31 * result + (username != null ? username.hashCode() : 0);
+        result = 31 * result + (address != null ? address.hashCode() : 0);
         result = 31 * result + (email != null ? email.hashCode() : 0);
         result = 31 * result + (group != null ? group.hashCode() : 0);
         return result;
@@ -40,7 +40,7 @@ public class NewContactData {
                 "id='" + id + '\'' +
                 ", firstname='" + firstname + '\'' +
                 ", secondname='" + secondname + '\'' +
-                ", username='" + username + '\'' +
+                ", address='" + address + '\'' +
                 ", email='" + email + '\'' +
                 ", group='" + group + '\'' +
                 '}';
@@ -50,20 +50,20 @@ public class NewContactData {
         return id;
     }
 
-    public NewContactData(String firstname, String secondname, String username, String email, String group) {
+    public NewContactData(String firstname, String secondname, String address, String email, String group) {
         this.id = null;
         this.firstname = firstname;
         this.secondname = secondname;
-        this.username = username;
+        this.address = address;
         this.email = email;
         this.group = group;
     }
 
-    public NewContactData(String id, String firstname, String secondname, String username, String email, String group) {
+    public NewContactData(String id, String firstname, String secondname, String address, String email, String group) {
         this.id = id;
         this.firstname = firstname;
         this.secondname = secondname;
-        this.username = username;
+        this.address = address;
         this.email = email;
         this.group = group;
     }
@@ -76,8 +76,8 @@ public class NewContactData {
         return secondname;
     }
 
-    public String getUsername() {
-        return username;
+    public String getAddress() {
+        return address;
     }
 
     public String getEmail() {
