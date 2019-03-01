@@ -32,6 +32,7 @@ public class ContactHelper extends HelperBase{
         }
         else {
             Assert.assertFalse(isElementPresent(By.name("new_group")));
+            //new Select(wd.findElement(By.name("new_group"))).selectByVisibleText("[none]");
         }
 
     }
@@ -52,7 +53,9 @@ public class ContactHelper extends HelperBase{
 
     }
 
-    public void initContactModification() {
+    public void initContactModification(int index) {
+        String y = "tr:nth-child(" + (index +1) + ")";
+        wd.findElements(By.cssSelector(y));
         click(By.cssSelector("img[alt=\"Edit\"]"));
     }
 
@@ -92,9 +95,9 @@ public class ContactHelper extends HelperBase{
             String add = cells.get(3).getText();
             String email = cells.get(4).getText();
             //String group = cells.get(6).getText();
-            String id = element.findElement(new By.ByTagName("input")).getAttribute("value");
+            String id_get = element.findElement(new By.ByTagName("input")).getAttribute("value");
 
-            NewContactData contact = new NewContactData(id, name, surname, add, email, null);
+            NewContactData contact = new NewContactData(id_get, name, surname, add, email, "[none]");
             //"Sebastian", "Savin", "user8","mailmail@mail.ru", "[none]"
             //NewContactData contact = new NewContactData(name, "Savin", "user8","mailmail@mail.ru", "[none]");
             contacts.add(contact);
