@@ -2,8 +2,10 @@ package stwtesting.autojava.tests;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import stwtesting.autojava.model.GroupData;
 import stwtesting.autojava.model.NewContactData;
 
+import java.util.Comparator;
 import java.util.HashSet;
 import java.util.List;
 
@@ -32,8 +34,12 @@ public class ContactModificationTests extends TestBase {
 
             before.remove(MyIndex);
             before.add(contact);
+            
+            Comparator<? super NewContactData> byId = (c1, c2) -> Integer.compare(c1.getId(), c2.getId());
+            before.sort(byId);
+            after.sort(byId);
 
-            Assert.assertEquals(new HashSet<>(before), new HashSet<>(after));
+            Assert.assertEquals(before, after);
 
     }
 }
