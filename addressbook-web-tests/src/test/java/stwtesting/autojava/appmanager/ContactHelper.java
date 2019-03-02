@@ -54,9 +54,12 @@ public class ContactHelper extends HelperBase{
     }
 
     public void initContactModification(int index) {
-        String y = "tr:nth-child(" + (index +1) + ")";
+        int r = index + 1;
+        String y = "tr:nth-child(" + (r) + ")";
         wd.findElements(By.cssSelector(y));
-        click(By.cssSelector("img[alt=\"Edit\"]"));
+        String e = "(//img[@alt='Edit'])[" + r + "]";
+        //System.out.println(e);
+        click(By.xpath(e));
     }
 
     public void submitContactModification() {
