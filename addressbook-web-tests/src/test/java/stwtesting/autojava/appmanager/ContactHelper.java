@@ -98,7 +98,7 @@ public class ContactHelper extends HelperBase{
             String add = cells.get(3).getText();
             String email = cells.get(4).getText();
             //String group = cells.get(6).getText();
-            String id_get = element.findElement(new By.ByTagName("input")).getAttribute("value");
+            int id_get = Integer.parseInt(element.findElement(new By.ByTagName("input")).getAttribute("value"));
 
             NewContactData contact = new NewContactData(id_get, name, surname, add, email, "[none]");
             //"Sebastian", "Savin", "user8","mailmail@mail.ru", "[none]"
