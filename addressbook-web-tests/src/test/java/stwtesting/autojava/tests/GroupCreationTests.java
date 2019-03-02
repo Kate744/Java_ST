@@ -1,7 +1,7 @@
 package stwtesting.autojava.tests;
 
 import org.testng.Assert;
-import org.testng.annotations.*;
+import org.testng.annotations.Test;
 import stwtesting.autojava.model.GroupData;
 
 import java.util.HashSet;
@@ -16,7 +16,7 @@ public class GroupCreationTests extends TestBase {
     app.getNavigationHelper().gotoGroupPage();
 
     List<GroupData> before = app.getGroupHelper().getGroupList();
-GroupData group = new GroupData("test5", null, null);
+GroupData group = new GroupData("test6", null, null);
 
     app.getGroupHelper().createGroup(group);
     List<GroupData> after = app.getGroupHelper().getGroupList();
@@ -30,6 +30,9 @@ for (GroupData g : after) {
     max = g.getId();
   }
 }
+
+    int max1 = after.stream().max((o1, o2) -> Integer.compare(o1.getId(), o2.getId())).get().getId();
+
 group.setId(max);
     before.add(group);
     Assert.assertEquals(new HashSet<>(before), new HashSet<>(after));
