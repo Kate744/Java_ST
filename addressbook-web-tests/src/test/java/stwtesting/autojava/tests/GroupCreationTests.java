@@ -24,16 +24,9 @@ GroupData group = new GroupData("test6", null, null);
     Assert.assertEquals(after.size(), before.size() +1);
 
 
-int max  = 0;
-for (GroupData g : after) {
-  if (g.getId() > max) {
-    max = g.getId();
-  }
-}
-
     int max1 = after.stream().max((o1, o2) -> Integer.compare(o1.getId(), o2.getId())).get().getId();
 
-group.setId(max);
+group.setId(max1);
     before.add(group);
     Assert.assertEquals(new HashSet<>(before), new HashSet<>(after));
   }
