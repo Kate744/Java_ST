@@ -11,9 +11,9 @@ import java.util.List;
 public class ContactModificationTests extends TestBase {
     @BeforeMethod
     public void ensurePreconditions () {
-        if ( app.getContactHelper().list().size() == 0) {
+        if ( app.contact().list().size() == 0) {
 
-            app.getContactHelper().create(new NewContactData().withFirstname("Ivanko").withSecondname("Ivankov").withAddress("jgii5").withEmail("fjfi@m").withGroup("[none]"));
+            app.contact().create(new NewContactData().withFirstname("Ivanko").withSecondname("Ivankov").withAddress("jgii5").withEmail("fjfi@m").withGroup("[none]"));
         };
         app.goTo().returnToHomePage();
     }
@@ -21,13 +21,13 @@ public class ContactModificationTests extends TestBase {
     public void  testContactModification() {
 
 
-            List<NewContactData> before = app.getContactHelper().list();
+            List<NewContactData> before = app.contact().list();
             int MyIndex = before.size()-1;
             NewContactData contact = new NewContactData().withId(before.get(MyIndex).getId()).withFirstname("Sebastianka").withSecondname("Solen").withAddress("gagarina 81").withEmail("mailmail7@mail.ru").withGroup("[none]");
 
-            app.getContactHelper().modify(MyIndex, contact);
+            app.contact().modify(MyIndex, contact);
             app.goTo().returnToHomePage();
-            List<NewContactData> after = app.getContactHelper().list();
+            List<NewContactData> after = app.contact().list();
             Assert.assertEquals(after.size(), before.size());
 
             before.remove(MyIndex);
