@@ -7,16 +7,18 @@ import stwtesting.autojava.model.NewContactData;
 import java.util.List;
 
 public class ContactDeletion extends TestBase{
+  @BeforeMethod
+  public void ensurePreconditions () {
+    if (! app.getContactHelper().isThereAContact()) {
 
+      app.getContactHelper().createNewContact(new NewContactData("Ivanko", "Ivankov", "jgii5", "fjfi@m", "[none]"));
+    };
+    app.getNavigationHelper().returnToHomePage();
+  }
 
   @Test
   public void testContactDeletion() {
 
-    if (! app.getContactHelper().isThereAContact()) {
-
-      app.getContactHelper().createNewContact(new NewContactData("Ivanko", "Ivankov", "jgii", "fjfi@m", "[none]"));
-    }
-    app.getNavigationHelper().returnToHomePage();
     List<NewContactData> before = app.getContactHelper().getContactList();
 
     app.getContactHelper().selectUser(before.size()-1);

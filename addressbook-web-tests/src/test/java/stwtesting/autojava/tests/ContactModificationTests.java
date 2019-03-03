@@ -1,34 +1,32 @@
 package stwtesting.autojava.tests;
 
 import org.testng.Assert;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import stwtesting.autojava.model.GroupData;
 import stwtesting.autojava.model.NewContactData;
 
 import java.util.Comparator;
-import java.util.HashSet;
 import java.util.List;
 
 public class ContactModificationTests extends TestBase {
+    @BeforeMethod
+    public void ensurePreconditions () {
+        if (! app.getContactHelper().isThereAContact()) {
+
+            app.getContactHelper().createNewContact(new NewContactData("Ivanko", "Ivankov", "jgii5", "fjfi@m", "[none]"));
+        };
+        app.getNavigationHelper().returnToHomePage();
+    }
         @Test
     public void  testContactModification() {
 
-            if (! app.getContactHelper().isThereAContact()) {
 
-                app.getContactHelper().createNewContact(new NewContactData("Ivanko", "Ivankov", "jgii5", "fjfi@m", "[none]"));
-            };
-            app.getNavigationHelper().returnToHomePage();
             List<NewContactData> before = app.getContactHelper().getContactList();
             int MyIndex = before.size()-1;
-            //app.getNavigationHelper().returnToHomePage();
-        app.getContactHelper().selectUser(MyIndex);
+            NewContactData contact = new NewContactData (before.get(MyIndex).getId(), "Sebastianka", "Solen", "gagarina 81","mailmail7@mail.ru", "[none]");
 
-        app.getContactHelper().initContactModification(MyIndex);
-        NewContactData contact = new NewContactData (before.get(MyIndex).getId(), "Sebastianka", "Solen", "gagarina 81","mailmail7@mail.ru", "[none]");
-        app.getContactHelper().fillNewContactForm(contact, false);
-        app.getContactHelper().submitContactModification();
-        app.getNavigationHelper().returnToHomePage();
-
+            app.getContactHelper().modifyContact(MyIndex, contact);
+            app.getNavigationHelper().returnToHomePage();
             List<NewContactData> after = app.getContactHelper().getContactList();
             Assert.assertEquals(after.size(), before.size());
 
@@ -42,4 +40,6 @@ public class ContactModificationTests extends TestBase {
             Assert.assertEquals(before, after);
 
     }
+
+
 }
