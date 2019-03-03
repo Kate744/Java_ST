@@ -16,10 +16,12 @@ public class ContactDeletion extends TestBase{
 
       app.getContactHelper().createNewContact(new NewContactData("Ivanko", "Ivankov", "jgii", "fjfi@m", "[none]"));
     }
-    List<NewContactData> before = app.getContactHelper().getContactList();
     app.getNavigationHelper().returnToHomePage();
+    List<NewContactData> before = app.getContactHelper().getContactList();
+
     app.getContactHelper().selectUser(before.size()-1);
     app.getContactHelper().submitDeletion();
+    app.getNavigationHelper().returnToHomePage();
     List<NewContactData> after = app.getContactHelper().getContactList();
     Assert.assertEquals(after.size(), before.size() -1);
 

@@ -25,8 +25,8 @@ GroupData group = new GroupData("test6", null, null);
     Assert.assertEquals(after.size(), before.size() +1);
 
 
-    int max1 = after.stream().max((o1, o2) -> Integer.compare(o1.getId(), o2.getId())).get().getId();
-    group.setId(max1);
+    //int max1 = after.stream().max((o1, o2) -> Integer.compare(o1.getId(), o2.getId())).get().getId();
+
     before.add(group);
     Comparator<? super GroupData> byId = (g1, g2) -> Integer.compare(g1.getId(), g2.getId());
     before.sort(byId);

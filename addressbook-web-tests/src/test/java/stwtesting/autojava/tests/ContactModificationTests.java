@@ -34,7 +34,7 @@ public class ContactModificationTests extends TestBase {
 
             before.remove(MyIndex);
             before.add(contact);
-            
+
             Comparator<? super NewContactData> byId = (c1, c2) -> Integer.compare(c1.getId(), c2.getId());
             before.sort(byId);
             after.sort(byId);

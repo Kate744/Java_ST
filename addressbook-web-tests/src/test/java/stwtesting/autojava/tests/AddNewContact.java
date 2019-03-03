@@ -5,6 +5,7 @@ import org.testng.annotations.*;
 import stwtesting.autojava.model.GroupData;
 import stwtesting.autojava.model.NewContactData;
 
+import java.util.Comparator;
 import java.util.HashSet;
 import java.util.List;
 
@@ -28,11 +29,11 @@ public class AddNewContact extends TestBase{
     app.getContactHelper().fillNewContactForm(new NewContactData("Ivanko", "Ivankov", "jgii", "fjfi@m", "Test5"), true);
     app.getContactHelper().submitNewContactCreation();*/
 
-
-    int max1 = after.stream().max((o1, o2) -> Integer.compare(o1.getId(), o2.getId())).get().getId();
-    contact.setId(max1);
             before.add(contact);
-    Assert.assertEquals(new HashSet<>(before), new HashSet<>(after));
+    Comparator<? super NewContactData> byId = (c1, c2) -> Integer.compare(c1.getId(), c2.getId());
+    before.sort(byId);
+    after.sort(byId);
+    Assert.assertEquals(before, after);
   }
 
 }
