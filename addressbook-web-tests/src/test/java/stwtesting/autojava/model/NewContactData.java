@@ -1,34 +1,23 @@
 package stwtesting.autojava.model;
 
 public class NewContactData {
-    private int id;
+    private int id = Integer.MAX_VALUE;
     private String firstname;
     private String secondname;
     private String address;
-
-
-
     private String email;
     private String group;
 
 
-    public NewContactData(String firstname, String secondname, String address, String email, String group) {
-        this.id = Integer.MAX_VALUE;
-        this.firstname = firstname;
-        this.secondname = secondname;
-        this.address = address;
-        this.email = email;
-        this.group = group;
-    }
 
-    public NewContactData(int id, String firstname, String secondname, String address, String email, String group) {
+    /*public NewContactData(int id, String firstname, String secondname, String address, String email, String group) {
         this.id = id;
         this.firstname = firstname;
         this.secondname = secondname;
         this.address = address;
         this.email = email;
         this.group = group;
-    }
+    }*/
 
     public String getFirstname() {
         return firstname;

@@ -15,9 +15,8 @@ public class AddNewContact extends TestBase{
     app.goTo().returnToHomePage();
 
     List<NewContactData> before = app.getContactHelper().list();
-    NewContactData contact = new NewContactData("Ivanko", "Ivankov", "jgii 7", "fjfi@m", "[none]");
+    NewContactData contact = new NewContactData().withFirstname("Ivanko").withSecondname("Ivankov").withAddress("jgii 7").withEmail("fjfi@m").withGroup("[none]");
     app.getContactHelper().create(contact);
-    //int after = app.getContactHelper().getContactCount();
     app.goTo().returnToHomePage();
     List<NewContactData> after = app.getContactHelper().list();
 

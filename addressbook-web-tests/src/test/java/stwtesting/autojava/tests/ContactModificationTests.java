@@ -13,7 +13,7 @@ public class ContactModificationTests extends TestBase {
     public void ensurePreconditions () {
         if ( app.getContactHelper().list().size() == 0) {
 
-            app.getContactHelper().create(new NewContactData("Ivanko", "Ivankov", "jgii5", "fjfi@m", "[none]"));
+            app.getContactHelper().create(new NewContactData().withFirstname("Ivanko").withSecondname("Ivankov").withAddress("jgii5").withEmail("fjfi@m").withGroup("[none]"));
         };
         app.goTo().returnToHomePage();
     }
@@ -23,7 +23,7 @@ public class ContactModificationTests extends TestBase {
 
             List<NewContactData> before = app.getContactHelper().list();
             int MyIndex = before.size()-1;
-            NewContactData contact = new NewContactData (before.get(MyIndex).getId(), "Sebastianka", "Solen", "gagarina 81","mailmail7@mail.ru", "[none]");
+            NewContactData contact = new NewContactData().withId(before.get(MyIndex).getId()).withFirstname("Sebastianka").withSecondname("Solen").withAddress("gagarina 81").withEmail("mailmail7@mail.ru").withGroup("[none]");
 
             app.getContactHelper().modify(MyIndex, contact);
             app.goTo().returnToHomePage();
