@@ -2,10 +2,13 @@ package stwtesting.autojava.model;
 
 public class NewContactData {
     private int id;
-    private final String firstname;
-    private final String secondname;
-    private final String address;
-    private final String email;
+    private String firstname;
+    private String secondname;
+    private String address;
+
+
+
+    private String email;
     private String group;
 
 
@@ -47,8 +50,34 @@ public class NewContactData {
         return group;
     }
 
-    public void setId(int id) {
+    public NewContactData withId(int id) {
         this.id = id;
+        return this;
+    }
+
+    public NewContactData withFirstname(String firstname) {
+        this.firstname = firstname;
+        return this;
+    }
+
+    public NewContactData withSecondname(String secondname) {
+        this.secondname = secondname;
+        return this;
+    }
+
+    public NewContactData withAddress(String address) {
+        this.address = address;
+        return this;
+    }
+
+    public NewContactData withEmail(String email) {
+        this.email = email;
+        return this;
+    }
+
+    public NewContactData withGroup(String group) {
+        this.group = group;
+        return this;
     }
 
     @Override
