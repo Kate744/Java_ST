@@ -2,7 +2,6 @@ package stwtesting.autojava.appmanager;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 
 public class NavigationHelper extends HelperBase{
 
@@ -18,7 +17,7 @@ return;}
         click(By.linkText("home"));
     }
 
-    public void gotoGroupPage() {
+    public void groupPage() {
 
         if (isElementPresent(By.tagName("h1"))
                 && wd.findElement(By.tagName("h1")).getText().equals("Groups")

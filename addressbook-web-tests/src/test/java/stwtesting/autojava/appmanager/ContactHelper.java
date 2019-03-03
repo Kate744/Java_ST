@@ -66,7 +66,7 @@ public class ContactHelper extends HelperBase{
         click(By.name("update"));
     }
 
-    public void createNewContact(NewContactData contact) {
+    public void create(NewContactData contact) {
 
         gotoNewContactPage();
         fillNewContactForm(contact, true);
@@ -74,11 +74,17 @@ public class ContactHelper extends HelperBase{
 
     }
 
-    public void modifyContact(int myIndex, NewContactData contact) {
+    public void modify(int myIndex, NewContactData contact) {
         selectUser(myIndex);
         initContactModification(myIndex);
         fillNewContactForm(contact, false);
         submitContactModification();
+    }
+
+    public void delete(int index) {
+        selectUser(index);
+        submitDeletion();
+
     }
 
     public boolean isThereAContact() {
@@ -92,7 +98,7 @@ public class ContactHelper extends HelperBase{
         return wd.findElements(By.name("selected[]")).size();
     }
 
-    public List<NewContactData> getContactList() {
+    public List<NewContactData> list() {
         List<NewContactData> contacts = new ArrayList<>();
         List<WebElement> elements = wd.findElements(By.name("entry"));
         for (WebElement element: elements) {
