@@ -5,7 +5,7 @@ import com.google.common.collect.ForwardingList;
 import java.util.*;
 
 public class Contacts extends ForwardingList<NewContactData> {
-    
+
     private List<NewContactData> delegate;
 
     public Contacts(Contacts contacts) {
@@ -15,123 +15,6 @@ public class Contacts extends ForwardingList<NewContactData> {
     public Contacts() {
         this.delegate = new ArrayList<NewContactData>();
     }
-
-
-            @Override
-            public int size() {
-                return 0;
-            }
-
-            @Override
-            public boolean isEmpty() {
-                return false;
-            }
-
-            @Override
-            public boolean contains(Object o) {
-                return false;
-            }
-
-            @Override
-            public Iterator<NewContactData> iterator() {
-                return null;
-            }
-
-            @Override
-            public Object[] toArray() {
-                return new Object[0];
-            }
-
-            @Override
-            public <T> T[] toArray(T[] a) {
-                return null;
-            }
-
-            @Override
-            public boolean add(NewContactData newContactData) {
-                return false;
-            }
-
-            @Override
-            public boolean remove(Object o) {
-                return false;
-            }
-
-            @Override
-            public boolean containsAll(Collection<?> c) {
-                return false;
-            }
-
-            @Override
-            public boolean addAll(Collection<? extends NewContactData> c) {
-                return false;
-            }
-
-            @Override
-            public boolean addAll(int index, Collection<? extends NewContactData> c) {
-                return false;
-            }
-
-            @Override
-            public boolean removeAll(Collection<?> c) {
-                return false;
-            }
-
-            @Override
-            public boolean retainAll(Collection<?> c) {
-                return false;
-            }
-
-            @Override
-            public void clear() {
-
-            }
-
-            @Override
-            public NewContactData get(int index) {
-                return null;
-            }
-
-            @Override
-            public NewContactData set(int index, NewContactData element) {
-                return null;
-            }
-
-            @Override
-            public void add(int index, NewContactData element) {
-
-            }
-
-            @Override
-            public NewContactData remove(int index) {
-                return null;
-            }
-
-            @Override
-            public int indexOf(Object o) {
-                return 0;
-            }
-
-            @Override
-            public int lastIndexOf(Object o) {
-                return 0;
-            }
-
-            @Override
-            public ListIterator<NewContactData> listIterator() {
-                return null;
-            }
-
-            @Override
-            public ListIterator<NewContactData> listIterator(int index) {
-                return null;
-            }
-
-            @Override
-            public List<NewContactData> subList(int fromIndex, int toIndex) {
-                return null;
-            }
-
 
 
     @Override
