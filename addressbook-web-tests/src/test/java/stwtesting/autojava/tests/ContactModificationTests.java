@@ -1,8 +1,11 @@
 package stwtesting.autojava.tests;
 
+import org.hamcrest.CoreMatchers;
+import org.hamcrest.MatcherAssert;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+import stwtesting.autojava.model.Contacts;
 import stwtesting.autojava.model.NewContactData;
 
 import java.util.Comparator;
@@ -21,13 +24,13 @@ public class ContactModificationTests extends TestBase {
     public void  testContactModification() {
 
 
-            List<NewContactData> before = app.contact().list();
+            Contacts before = app.contact().list();
             int MyIndex = before.size()-1;
             NewContactData contact = new NewContactData().withId(before.get(MyIndex).getId()).withFirstname("Sebastianka").withSecondname("Solen").withAddress("gagarina 81").withEmail("mailmail7@mail.ru").withGroup("[none]");
 
             app.contact().modify(MyIndex, contact);
             app.goTo().returnToHomePage();
-            List<NewContactData> after = app.contact().list();
+            Contacts after = app.contact().list();
             Assert.assertEquals(after.size(), before.size());
 
             before.remove(MyIndex);
@@ -37,7 +40,8 @@ public class ContactModificationTests extends TestBase {
             before.sort(byId);
             after.sort(byId);
 
-            Assert.assertEquals(before, after);
+            //Assert.assertEquals(before, after);
+            MatcherAssert.assertThat(after, CoreMatchers.equalTo(before.without(before.get(MyIndex)).withAdded(contact)));
 
     }
 

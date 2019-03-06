@@ -1,7 +1,10 @@
 package stwtesting.autojava.tests;
 
+import org.hamcrest.CoreMatchers;
+import org.hamcrest.MatcherAssert;
 import org.testng.Assert;
 import org.testng.annotations.*;
+import stwtesting.autojava.model.Contacts;
 import stwtesting.autojava.model.NewContactData;
 
 import java.util.List;
@@ -19,16 +22,16 @@ public class ContactDeletion extends TestBase{
   @Test
   public void testContactDeletion() {
 
-    List<NewContactData> before = app.contact().list();
-int index  = before.size()-1;
+    Contacts before = app.contact().list();
+    int index  = before.size()-1;
     app.contact().delete(index);
     app.goTo().returnToHomePage();
-    List<NewContactData> after = app.contact().list();
+    Contacts after = app.contact().list();
     Assert.assertEquals(after.size(), before.size() -1);
 
-    before.remove(index);
-
-    Assert.assertEquals(before, after);
+    //before.remove(index);
+MatcherAssert.assertThat(after, CoreMatchers.equalTo(before.without(before.get(index))));
+    //Assert.assertEquals(before, after);
   }
 
 
