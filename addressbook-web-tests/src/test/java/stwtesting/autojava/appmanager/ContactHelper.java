@@ -8,7 +8,7 @@ import org.testng.Assert;
 import stwtesting.autojava.model.Contacts;
 import stwtesting.autojava.model.NewContactData;
 
-import java.util.ArrayList;
+
 import java.util.List;
 
 public class ContactHelper extends HelperBase{
@@ -72,7 +72,7 @@ public class ContactHelper extends HelperBase{
         gotoNewContactPage();
         fillNewContactForm(contact, true);
         submitNewContactCreation();
-
+        contactCache = null;
     }
 
     public void modify(int myIndex, NewContactData contact) {
@@ -80,12 +80,13 @@ public class ContactHelper extends HelperBase{
         initContactModification(myIndex);
         fillNewContactForm(contact, false);
         submitContactModification();
+        contactCache = null;
     }
 
     public void delete(int index) {
         selectUser(index);
         submitDeletion();
-
+        contactCache = null;
     }
 
     public boolean isThereAContact() {
@@ -99,8 +100,14 @@ public class ContactHelper extends HelperBase{
         return wd.findElements(By.name("selected[]")).size();
     }
 
+    private Contacts contactCache = null;
+
     public Contacts list() {
-        Contacts contacts = new Contacts();
+        if (contactCache != null) {
+            return new Contacts(contactCache);
+        }
+
+        contactCache = new Contacts();
         List<WebElement> elements = wd.findElements(By.name("entry"));
         for (WebElement element: elements) {
 
@@ -113,9 +120,9 @@ public class ContactHelper extends HelperBase{
 
             NewContactData contact = new NewContactData().withId(id_get).withFirstname(name).withSecondname(surname).withAddress(add).withEmail(email).withGroup("[none]");
 
-            contacts.add(contact);
+            contactCache.add(contact);
         }
-        return contacts;
+        return new Contacts(contactCache);
 
 
     }
