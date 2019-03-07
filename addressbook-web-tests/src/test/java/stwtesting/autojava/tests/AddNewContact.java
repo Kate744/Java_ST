@@ -31,7 +31,7 @@ public class AddNewContact extends TestBase{
     Comparator<? super NewContactData> byId = (c1, c2) -> Integer.compare(c1.getId(), c2.getId());
     before.sort(byId);
     after.sort(byId);
-
+    assertThat(app.contact().count(), equalTo(before.size() +1));
     assertThat(after, equalTo(before.withAdded(contact)));
   }
 

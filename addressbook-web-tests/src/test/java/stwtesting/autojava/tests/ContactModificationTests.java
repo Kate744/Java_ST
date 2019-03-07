@@ -11,6 +11,9 @@ import stwtesting.autojava.model.NewContactData;
 import java.util.Comparator;
 import java.util.List;
 
+import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.MatcherAssert.assertThat;
+
 public class ContactModificationTests extends TestBase {
     @BeforeMethod
     public void ensurePreconditions () {
@@ -30,6 +33,7 @@ public class ContactModificationTests extends TestBase {
 
             app.contact().modify(MyIndex, contact);
             app.goTo().returnToHomePage();
+            assertThat(app.contact().count(), equalTo(before.size()));
             Contacts after = app.contact().list();
             Assert.assertEquals(after.size(), before.size());
 
