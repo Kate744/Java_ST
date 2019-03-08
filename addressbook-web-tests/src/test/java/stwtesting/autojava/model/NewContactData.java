@@ -8,6 +8,36 @@ public class NewContactData {
     private String email;
     private String group;
 
+    public String getHomePhone() {
+        return homePhone;
+    }
+    public NewContactData withHomePhone (String homePhone) {
+        this.homePhone = homePhone;
+        return this;
+    }
+
+    public String getMobilePhone() {
+        return mobilePhone;
+    }
+
+    public NewContactData withMobilePhone (String mobilePhone) {
+        this.mobilePhone = mobilePhone;
+        return this;
+    }
+
+    public String getWorkPhone() {
+        return workPhone;
+    }
+
+    public NewContactData withWorkPhone (String workPhone) {
+        this.workPhone = workPhone;
+        return this;
+    }
+
+    private String homePhone;
+    private String mobilePhone;
+    private String workPhone;
+
 
 
     /*public NewContactData(int id, String firstname, String secondname, String address, String email, String group) {
