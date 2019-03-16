@@ -13,6 +13,16 @@ public class NewContactData {
     private String email2;
     private String email3;
 
+    public String getAllphones() {
+        return Allphones;
+    }
+
+    public NewContactData withAllphones(String allphones) {
+        Allphones = allphones;
+        return this;
+    }
+
+    private String Allphones;
 
 
 

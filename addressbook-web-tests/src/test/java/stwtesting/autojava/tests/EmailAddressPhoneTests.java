@@ -3,6 +3,9 @@ package stwtesting.autojava.tests;
 import org.testng.annotations.Test;
 import stwtesting.autojava.model.NewContactData;
 
+import java.util.Arrays;
+import java.util.stream.Collectors;
+
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
 
@@ -14,9 +17,8 @@ public class EmailAddressPhoneTests extends TestBase {
         NewContactData contact = app.contact().list().get(0);
         NewContactData contactInfoFromEditForm = app.contact().infoFromEditForm(contact);
 
-        assertThat(contact.getHomePhone(), equalTo(cleaned(contactInfoFromEditForm.getHomePhone())));
-        assertThat(contact.getMobilePhone(), equalTo(cleaned(contactInfoFromEditForm.getMobilePhone())));
-        assertThat(contact.getWorkPhone(), equalTo(cleaned(contactInfoFromEditForm.getWorkPhone())));
+        assertThat(contact.getAllphones(), equalTo(mergePhones(contactInfoFromEditForm)));
+
 
         assertThat(contact.getAddress(), equalTo(contactInfoFromEditForm.getAddress()));
 
@@ -25,7 +27,14 @@ public class EmailAddressPhoneTests extends TestBase {
         assertThat(contact.getEmail3(), equalTo(contactInfoFromEditForm.getEmail3()));
     }
 
-public String cleaned (String phone) {
+    private String mergePhones(NewContactData contact) {
+        return Arrays.asList(contact.getHomePhone(), contact.getMobilePhone(), contact.getWorkPhone()).
+                stream().filter((s) -> ! s.equals("")).
+                map(EmailAddressPhoneTests::cleaned).
+                collect(Collectors.joining("\n"));
+    }
+
+    public static String cleaned(String phone) {
         return phone.replaceAll("\\s", "").replaceAll("[-()]", "");
 }
 

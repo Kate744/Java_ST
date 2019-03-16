@@ -114,7 +114,8 @@ public class ContactHelper extends HelperBase{
             List<WebElement>cells = element.findElements(By.tagName("td"));
             String name = cells.get(2).getText();
             String surname = cells.get(1).getText();
-            String[] phones = cells.get(5).getText().split("\n");
+            //String[] phones = cells.get(5).getText().split("\n");
+            String Allphones = cells.get(5).getText();
             String add = cells.get(3).getText();
             //String email = cells.get(4).getText();
             String[] emails = cells.get(4).getText().split("\n");
@@ -122,7 +123,7 @@ public class ContactHelper extends HelperBase{
 
             NewContactData contact = new NewContactData().withId(id_get).withFirstname(name).withSecondname(surname).
                     withAddress(add).withEmail(emails[0]).withEmail2(emails[1]).withEmail3(emails[2]).
-                    withHomePhone(phones[0]).withMobilePhone(phones[1]).withWorkPhone(phones[2]).withGroup("[none]");
+                    withAllphones(Allphones);
 
 
             contactCache.add(contact);
