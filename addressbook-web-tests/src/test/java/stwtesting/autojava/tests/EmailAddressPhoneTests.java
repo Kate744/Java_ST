@@ -14,9 +14,9 @@ public class EmailAddressPhoneTests extends TestBase {
         NewContactData contact = app.contact().list().get(0);
         NewContactData contactInfoFromEditForm = app.contact().infoFromEditForm(contact);
 
-        assertThat(contact.getHomePhone(), equalTo(contactInfoFromEditForm.getHomePhone()));
-        assertThat(contact.getMobilePhone(), equalTo(contactInfoFromEditForm.getMobilePhone()));
-        assertThat(contact.getWorkPhone(), equalTo(contactInfoFromEditForm.getWorkPhone()));
+        assertThat(contact.getHomePhone(), equalTo(cleaned(contactInfoFromEditForm.getHomePhone())));
+        assertThat(contact.getMobilePhone(), equalTo(cleaned(contactInfoFromEditForm.getMobilePhone())));
+        assertThat(contact.getWorkPhone(), equalTo(cleaned(contactInfoFromEditForm.getWorkPhone())));
 
         assertThat(contact.getAddress(), equalTo(contactInfoFromEditForm.getAddress()));
 
@@ -25,6 +25,8 @@ public class EmailAddressPhoneTests extends TestBase {
         assertThat(contact.getEmail3(), equalTo(contactInfoFromEditForm.getEmail3()));
     }
 
-
+public String cleaned (String phone) {
+        return phone.replaceAll("\\s", "").replaceAll("[-()]", "");
+}
 
 }
