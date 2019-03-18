@@ -134,12 +134,9 @@ public class NewContactData {
     @Override
     public String toString() {
         return "NewContactData{" +
-                "id='" + id + '\'' +
+                "id=" + id +
                 ", firstname='" + firstname + '\'' +
                 ", secondname='" + secondname + '\'' +
-                ", address='" + address + '\'' +
-                ", email='" + email + '\'' +
-                ", group='" + group + '\'' +
                 '}';
     }
 
