@@ -18,14 +18,21 @@ public class EmailAddressPhoneTests extends TestBase {
         NewContactData contactInfoFromEditForm = app.contact().infoFromEditForm(contact);
 
         assertThat(contact.getAllphones(), equalTo(mergePhones(contactInfoFromEditForm)));
-
+        assertThat(contact.getAllEmails(), equalTo(mergeEmails(contactInfoFromEditForm)));
 
         assertThat(contact.getAddress(), equalTo(contactInfoFromEditForm.getAddress()));
 
-        assertThat(contact.getEmail(), equalTo(contactInfoFromEditForm.getEmail()));
-        assertThat(contact.getEmail2(), equalTo(contactInfoFromEditForm.getEmail2()));
-        assertThat(contact.getEmail3(), equalTo(contactInfoFromEditForm.getEmail3()));
+        //assertThat(contact.getEmail(), equalTo(contactInfoFromEditForm.getEmail()));
+        //assertThat(contact.getEmail2(), equalTo(contactInfoFromEditForm.getEmail2()));
+        //assertThat(contact.getEmail3(), equalTo(contactInfoFromEditForm.getEmail3()));
     }
+
+    private String mergeEmails(NewContactData contact) {
+        return Arrays.asList(contact.getEmail(), contact.getEmail2(), contact.getEmail3())
+                .stream().filter((s) -> ! s.equals("")).collect(Collectors.joining("\n"));
+
+    }
+
 
     private String mergePhones(NewContactData contact) {
         return Arrays.asList(contact.getHomePhone(), contact.getMobilePhone(), contact.getWorkPhone()).

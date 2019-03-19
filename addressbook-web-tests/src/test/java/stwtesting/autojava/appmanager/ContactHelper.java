@@ -119,10 +119,11 @@ public class ContactHelper extends HelperBase{
             String add = cells.get(3).getText();
             //String email = cells.get(4).getText();
             String[] emails = cells.get(4).getText().split("\n");
+            String allEmails = cells.get(4).getText();
             int id_get = Integer.parseInt(element.findElement(new By.ByTagName("input")).getAttribute("value"));
 
             NewContactData contact = new NewContactData().withId(id_get).withFirstname(name).withSecondname(surname).
-                    withAddress(add).withEmail(emails[0]).withEmail2(emails[1]).withEmail3(emails[2]).
+                    withAddress(add).withAllEmails(allEmails).
                     withAllphones(Allphones);
 
 

@@ -28,7 +28,7 @@ public class GroupCreationTests extends TestBase {
   }
 
 
-  @Test
+  @Test (enabled = false)
   public void testBadGroupCreation() throws Exception {
 
     app.goTo().groupPage();
