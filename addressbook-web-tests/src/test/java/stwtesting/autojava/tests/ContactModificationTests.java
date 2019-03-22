@@ -44,8 +44,8 @@ public class ContactModificationTests extends TestBase {
             before.sort(byId);
             after.sort(byId);
 
-            //Assert.assertEquals(before, after);
-            MatcherAssert.assertThat(after, CoreMatchers.equalTo(before.without(before.get(MyIndex)).withAdded(contact)));
+            Assert.assertEquals(before, after);
+            //MatcherAssert.assertThat(after, CoreMatchers.equalTo(before.without(before.get(MyIndex)).withAdded(contact)));
 
     }
 

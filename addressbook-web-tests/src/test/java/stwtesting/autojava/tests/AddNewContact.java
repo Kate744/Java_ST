@@ -1,14 +1,10 @@
 package stwtesting.autojava.tests;
 
-import org.hamcrest.CoreMatchers;
-import org.hamcrest.MatcherAssert;
-import org.testng.Assert;
-import org.testng.annotations.*;
+import org.testng.annotations.Test;
 import stwtesting.autojava.model.Contacts;
 import stwtesting.autojava.model.NewContactData;
 
 import java.util.Comparator;
-import java.util.List;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
