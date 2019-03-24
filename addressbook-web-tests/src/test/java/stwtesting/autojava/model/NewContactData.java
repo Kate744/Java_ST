@@ -24,7 +24,12 @@ public class NewContactData {
 
         NewContactData that = (NewContactData) o;
 
-        if (id != that.id) return false;
+        if ((id != 0) & (that.id != 0) ) {
+            if (id != that.id) return false;
+        }
+        if ((id == 0) | (that.id == 0) ) {
+            return true;
+        }
         if (firstname != null ? !firstname.equals(that.firstname) : that.firstname != null) return false;
         return secondname != null ? secondname.equals(that.secondname) : that.secondname == null;
     }
